@@ -27,7 +27,7 @@ jobs:
         cache: true
 
     - name: Initialize Android Platform
-      run: flutter create . --platforms=android
+      run: flutter create . --platforms=android --project-name=zuhri_formalism_app
 
     - name: Install Dependencies
       run: flutter pub get
