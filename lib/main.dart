@@ -32,12 +32,10 @@ class DisasterAlertHomePage extends StatefulWidget {
 }
 
 class _DisasterAlertHomePageState extends State<DisasterAlertHomePage> {
-  // Status siaga umum
   String statusGlobal = "GLOBAL: TERMONITOR STABIL";
   String statusNusantara = "NUSANTARA: WASPADA ANOMALI MUSIM";
   Color statusColor = Colors.orangeAccent;
   
-  // Status Detail Ancaman Bencana
   String infoGunung = "Gunung Berapi: Status Normal (Monitoring Semeru, Merapi, Agung)";
   String infoBanjir = "Banjir/Hidrometeorologi: Siaga potensi curah hujan tinggi regional";
   String infoBadai = "Badai & Siklon: Terdeteksi pusaran angin di wilayah perairan selatan";
@@ -56,7 +54,6 @@ class _DisasterAlertHomePageState extends State<DisasterAlertHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Status Indikator Utama
             Card(
               color: const Color(0xFF1E1E1E),
               shape: RoundedRectangleBorder(
@@ -88,47 +85,19 @@ class _DisasterAlertHomePageState extends State<DisasterAlertHomePage> {
               ),
             ),
             const SizedBox(height: 20),
-
-            // Daftar Modul Pemantauan Bencana (Nusantara & Global)
             const Text(
               'Monitoring Ancaman & Mitigasi',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white70),
             ),
             const SizedBox(height: 10),
-
-            _buildDisasterCard(
-              'Aktivitas Gunung Meletus',
-              infoGunung,
-              Icons.volcano,
-              Colors.redAccent,
-            ),
+            _buildDisasterCard('Aktivitas Gunung Meletus', infoGunung, Icons.volcano, Colors.redAccent),
             const SizedBox(height: 10),
-
-            _buildDisasterCard(
-              'Potensi Banjir & Genangan',
-              infoBanjir,
-              Icons.flood,
-              Colors.blueAccent,
-            ),
+            _buildDisasterCard('Potensi Banjir & Genangan', infoBanjir, Icons.flood, Colors.blueAccent),
             const SizedBox(height: 10),
-
-            _buildDisasterCard(
-              'Badai & Siklon Tropis',
-              infoBadai,
-              Icons.storm,
-              Colors.purpleAccent,
-            ),
+            _buildDisasterCard('Badai & Siklon Tropis', infoBadai, Icons.storm, Colors.purpleAccent),
             const SizedBox(height: 10),
-
-            _buildDisasterCard(
-              'Aktivitas Seismik / Gempa',
-              infoGempa,
-              Icons.tsunami,
-              Colors.orangeAccent,
-            ),
+            _buildDisasterCard('Aktivitas Seismik / Gempa', infoGempa, Icons.tsunami, Colors.orangeAccent),
             const SizedBox(height: 25),
-
-            // Tombol Sinkronisasi Data Global & Nusantara
             ElevatedButton.icon(
               onPressed: () {
                 setState(() {
@@ -140,7 +109,7 @@ class _DisasterAlertHomePageState extends State<DisasterAlertHomePage> {
                   infoBadai = "PERINGATAN: Waspada kecepatan angin ekstrem dan gelombang tinggi.";
                   infoGempa = "PERINGATAN: Rekaman sensor menunjukkan fluktuasi mikroseismik.";
                 });
-                ScaffoldMessenger.get(context).showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Sinkronisasi data global & nusantara diperbarui!')),
                 );
               },
